@@ -2,6 +2,10 @@
 
 A FiftyOne plugin that detects mislabeled videos using **Twelve Labs Marengo** embeddings and AI-generated descriptions. Select samples in the FiftyOne App, run the operator, and instantly see which labels don't match the actual video content.
 
+## Demo
+
+![LabelGuard Demo](output_edited.gif)
+
 ## How It Works
 
 LabelGuard uses a dual verification approach powered by Twelve Labs:
