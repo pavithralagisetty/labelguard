@@ -67,48 +67,15 @@ That's **expensive**, **slow**, and **unreliable**
 
 **Skip the training. Ask the video directly.**
 
-Twelve Labs Marengo embeds video and text into the **same vector space**
+Twelve Labs Marengo embeds video and text into the **same 1024-dim vector space**
 
 ```
-Video file  →  Marengo video embedding (1024-dim)
-Label text  →  Marengo text embedding  (1024-dim)
-
+Video file  →  Marengo video embedding
+Label text  →  Marengo text embedding
 cosine_similarity(video, text)  →  MATCH or MISMATCH
 ```
 
-If they don't match → **the label is wrong**
-
----
-
-## But Wait, There's More
-
-We don't just give you a number — we show you **why**
-
-Twelve Labs Analyze generates a **one-sentence description** of the video
-
-| Ground Truth Label | AI Description |
-|---|---|
-| "front crawl" | "A swimmer performing backstroke in a pool" |
-| "white flowers blooming" | "Cherry blossoms on a tree against a blue sky" |
-
-Both are displayed as **overlays** in FiftyOne for instant visual comparison
-
----
-
-## How It Works
-
-```
-1. Select video samples in FiftyOne App
-2. Run "Check Video Label" operator
-3. Each sample gets:
-   → similarity_score  (float)
-   → label_check       (MATCH / MISMATCH)
-   → is_mislabeled     (true / false)
-   → video_description  (AI-generated)
-4. Filter & sort to find the worst offenders
-```
-
-**No model training. No fine-tuning. No waiting.**
+Plus Twelve Labs Analyze generates an **AI description** of the video — so you see *why* the label is wrong, not just that it is
 
 ---
 
@@ -118,50 +85,20 @@ Both are displayed as **overlays** in FiftyOne for instant visual comparison
 
 ---
 
-## Architecture
+## How It Works
 
-```
-┌─────────────────────────────────────────────┐
-│              FiftyOne App                    │
-│  Select samples → Run operator → See results│
-└──────────────────┬──────────────────────────┘
-                   │
-        ┌──────────▼──────────┐
-        │   LabelGuard Plugin │
-        └──────────┬──────────┘
-                   │
-     ┌─────────────▼─────────────┐
-     │      Twelve Labs APIs      │
-     │  Marengo Embed + Analyze   │
-     └───────────────────────────┘
-```
+1. **Select** video samples in the FiftyOne App
+2. **Run** the "Check Video Label" operator
+3. **Get results** on every sample:
 
----
+| Field | What It Tells You |
+|---|---|
+| `similarity_score` | How well the label matches the video (0 to 1) |
+| `label_check` | `MATCH` or `MISMATCH` |
+| `is_mislabeled` | `true` / `false` — filterable in one click |
+| `video_description` | AI-generated description overlaid on the sample |
 
-## Output Fields
-
-| Field | Type | Example |
-|---|---|---|
-| `similarity_score` | float | `0.28` |
-| `label_check` | string | `MISMATCH` |
-| `is_mislabeled` | boolean | `True` |
-| `video_description` | Classification | "A swimmer doing backstroke" |
-
-Filter in FiftyOne:
-```python
-dataset.match(F("is_mislabeled") == True)
-dataset.sort_by("similarity_score")
-```
-
----
-
-## Why Marengo?
-
-- **Joint video-text embedding space** — no separate models needed
-- **Zero-shot** — works on any label vocabulary out of the box
-- **No index required** — embed directly, no setup overhead
-- **1024-dim vectors** — fast cosine similarity comparison
-- **Analyze API** — human-readable descriptions for explainability
+**No model training. No fine-tuning. No waiting.**
 
 ---
 
@@ -170,14 +107,19 @@ dataset.sort_by("similarity_score")
 | Component | Role |
 |---|---|
 | **FiftyOne** | Dataset curation & visualization |
-| **Twelve Labs Marengo** | Video-text embeddings |
+| **Twelve Labs Marengo Embed** | Joint video-text embeddings |
 | **Twelve Labs Analyze** | Video description generation |
 | **NumPy** | Cosine similarity computation |
+
+- **Zero-shot** — works on any label vocabulary out of the box
+- **No index required** — embed directly, no setup overhead
+- **Explainable** — AI descriptions show what the model actually sees
 
 ---
 
 # Thank You
 
-**LabelGuard** — because you shouldn't need to train a model to find out your training data is wrong
+**LabelGuard** — because you shouldn't need to train a model
+to find out your training data is wrong
 
 GitHub: **github.com/pavithralagisetty/labelguard**
