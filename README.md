@@ -4,7 +4,7 @@ A FiftyOne plugin that detects mislabeled videos using **Twelve Labs Marengo** e
 
 ## Why This Exists
 
-Large video datasets ship with label noise baked in. The [Kinetics dataset](https://voxel51.com/blog/the-kinetics-dataset-train-and-evaluate-video-classification-models) (300K YouTube videos, 400 action classes) is a well-known example -- a Voxel51 engineer manually discovered a clip labeled "front crawl" that actually showed breaststroke and backstroke. The correct label didn't appear anywhere in the video. The only way they found it was by training a full model first and hoping it disagreed with the bad label.
+Large video datasets ship with label noise baked in. The Kinetics dataset (300K YouTube videos, 400 action classes) is a well-known example -- a Voxel51 engineer manually discovered a clip labeled "front crawl" that actually showed breaststroke and backstroke. The correct label didn't appear anywhere in the video. The only way they found it was by training a full model first and hoping it disagreed with the bad label. (Reference: https://voxel51.com/blog/the-kinetics-dataset-train-and-evaluate-video-classification-models)
 
 That workflow is backwards: **you shouldn't need to train a model to find out your training data is wrong.**
 
