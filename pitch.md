@@ -81,38 +81,6 @@ Plus Twelve Labs Analyze generates an **AI description** of the video — so you
 
 ---
 
-## How It Works
-
-1. **Select** video samples in the FiftyOne App
-2. **Run** the "Check Video Label" operator
-3. **Get results** on every sample:
-
-| Field | What It Tells You |
-|---|---|
-| `similarity_score` | How well the label matches the video (0 to 1) |
-| `label_check` | `MATCH` or `MISMATCH` |
-| `is_mislabeled` | `true` / `false` — filterable in one click |
-| `video_description` | AI-generated description overlaid on the sample |
-
-**No model training. No fine-tuning. No waiting.**
-
----
-
-## Tech Stack
-
-| Component | Role |
-|---|---|
-| **FiftyOne** | Dataset curation & visualization |
-| **Twelve Labs Marengo Embed** | Joint video-text embeddings |
-| **Twelve Labs Analyze** | Video description generation |
-| **NumPy** | Cosine similarity computation |
-
-- **Zero-shot** — works on any label vocabulary out of the box
-- **No index required** — embed directly, no setup overhead
-- **Explainable** — AI descriptions show what the model actually sees
-
----
-
 # Thank You
 
 **LabelGuard** — because you shouldn't need to train a model
