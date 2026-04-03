@@ -81,8 +81,6 @@ Plus Twelve Labs Analyze generates an **AI description** of the video — so you
 
 ## Demo
 
-![w:900](output_edited.gif)
-
 ---
 
 ## How It Works
