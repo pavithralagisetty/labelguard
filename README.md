@@ -2,6 +2,14 @@
 
 A FiftyOne plugin that detects mislabeled videos using **Twelve Labs Marengo** embeddings and AI-generated descriptions. Select samples in the FiftyOne App, run the operator, and instantly see which labels don't match the actual video content.
 
+## Why This Exists
+
+Large video datasets ship with label noise baked in. The Kinetics dataset (300K YouTube videos, 400 action classes) is a well-known example -- a Voxel51 engineer manually discovered a clip labeled "front crawl" that actually showed breaststroke and backstroke. The correct label didn't appear anywhere in the video. The only way they found it was by training a full model first and hoping it disagreed with the bad label.
+
+That workflow is backwards: **you shouldn't need to train a model to find out your training data is wrong.**
+
+LabelGuard finds these mismatches automatically with zero training required. Twelve Labs Marengo already understands video content -- we just compare what it sees against what the label claims. No model training, no waiting for convergence, no hoping the model learns enough to spot the error. Select your samples, run the operator, get results.
+
 ## Demo
 
 ![LabelGuard Demo](output_edited.gif)
