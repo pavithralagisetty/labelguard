@@ -1,0 +1,3 @@
+twelvelabs
+numpy
+fiftyone

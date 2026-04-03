@@ -1,0 +1,9 @@
+name: "@pavithralagisetty/labelguard"
+version: "1.0.0"
+description: "Flag mislabeled videos using Twelve Labs Marengo embeddings and AI-generated descriptions"
+fiftyone:
+  version: ">=0.23"
+secrets:
+  - TWELVELABS_API_KEY
+operators:
+  - check_video_label
