@@ -59,8 +59,6 @@ Large video datasets ship with **label noise baked in**
 
 **Current solution:** Train a model first, hope it disagrees with the bad label
 
-That's **expensive**, **slow**, and **unreliable**
-
 ---
 
 ## Our Solution
