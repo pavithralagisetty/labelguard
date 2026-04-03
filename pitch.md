@@ -25,6 +25,15 @@ style: |
     background: #16213e;
     color: #00d2ff;
   }
+  pre {
+    background: #16213e !important;
+    border-radius: 12px;
+    padding: 20px 28px;
+  }
+  pre code {
+    background: #16213e !important;
+    color: #00d2ff !important;
+  }
   table {
     font-size: 0.8em;
   }
